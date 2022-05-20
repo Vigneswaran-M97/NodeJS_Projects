@@ -46,6 +46,16 @@ router.patch('/:id', async(req, res) => {
         res.send('Error '+err);
     }
 
+});
+
+router.delete('/:id', async(req, res)=>{
+    try{
+        const alien = await Alien.findById(req.params.id);
+        alien.delete();
+        res.send(`${req.params.id} deleted`);
+    }catch(err){
+        res.send('Error '+err);
+    }
 })
 
 module.exports = router;
