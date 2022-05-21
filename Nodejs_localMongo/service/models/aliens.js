@@ -1,19 +1,29 @@
 const mongoose = require('mongoose');
 
+
 const alienScheme = new mongoose.Schema({
     Name: {
-        type: 'string',
+        type: String,
         require : true
     },
-    Tech: {
-        type: 'string',
-        require : true
-    },
-    Sub:{
-        type: 'string',
+    Mail: {
+        type: String,
         require : true,
-        default: false
+        unique: true
+    },
+    Phone:{
+        type: Number,
+        require : true,
+        unique: true
+    },
+    Group: {
+        type: String,
+        require : true,
+    },
+    Domain: {
+        type: String,
+        require : true,
     }
-});
 
-module.exports = mongoose.model('Alien',alienScheme)
+},{versionKey:false});
+module.exports = mongoose.model('User',alienScheme)
